@@ -44,5 +44,5 @@ spec:
       restartPolicy: Always
       volumes:
       - name: my-data
-        hostpath:
+        hostPath:
           - path: /mnt/deathstar 
