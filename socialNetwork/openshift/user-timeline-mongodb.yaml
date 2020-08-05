@@ -45,4 +45,4 @@ spec:
       volumes:
       - name: my-data
         hostPath:
-          path: /mnt/deathstar 
+          path: "/mnt/deathstar" 
