@@ -162,6 +162,8 @@ services:
 #    ports:
 #      - 27023:27017
     restart: always
+    volumes:
+      - /mnt/deathstar: /data/db
 
   media-service:
     image: yg397/social-network-microservices
