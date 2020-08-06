@@ -44,5 +44,4 @@ spec:
       restartPolicy: Always
       volumes:
       - name: my-data
-        persistentVolumeClaim:
-          claimName: user-mongo-pvc-volume
+        emptyDir: {}

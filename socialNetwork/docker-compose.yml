@@ -24,6 +24,8 @@ services:
 #    ports:
 #      - 27018:27017
     restart: always
+    volumes:
+      - /mnt/deathstar/social-graph-mongodb:/data/db
 
   social-graph-redis:
     image: redis
@@ -96,6 +98,9 @@ services:
 #    ports:
 #      - 27019:27017
     restart: always
+    volumes:
+      - /mnt/deathstar/post-storage-mongodb:/data/db
+
 
   user-timeline-service:
     image: yg397/social-network-microservices
@@ -118,6 +123,8 @@ services:
 #    ports:
 #      - 27020:27017
     restart: always
+    volumes:
+      - /mnt/deathstar/user-timeline-mongodb:/data/db
 
   url-shorten-service:
     image: yg397/social-network-microservices
@@ -140,6 +147,8 @@ services:
 #    ports:
 #      - 27021:27017
     restart: always
+    volumes:
+      - /mnt/deathstar/url-shorten-mongodb:/data/db
 
   user-service:
     image: yg397/social-network-microservices
@@ -163,7 +172,7 @@ services:
 #      - 27023:27017
     restart: always
     volumes:
-      - /mnt/deathstar: /data/db
+      - /mnt/deathstar/user-mongodb:/data/db
 
   media-service:
     image: yg397/social-network-microservices
@@ -186,6 +195,8 @@ services:
 #    ports:
 #      - 27024:27017
     restart: always
+    volumes:
+      - /mnt/deathstar/media-mongodb:/data/db
 
   text-service:
     image: yg397/social-network-microservices
