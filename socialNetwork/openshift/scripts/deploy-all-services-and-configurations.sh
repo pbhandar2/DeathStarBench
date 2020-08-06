@@ -12,6 +12,9 @@ oc adm policy add-scc-to-user privileged -z default -n ${NS}
 # The following script optionally creates local docker images suitable for local customization.
 # ./scripts/build-docker-img.sh
 
+oc create -f pv.yaml
+oc create -f user-mongo-pvc.yaml
+
 for service in *.yaml ;  do
   oc apply -f $service -n ${NS}
 done
