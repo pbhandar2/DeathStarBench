@@ -44,5 +44,5 @@ spec:
       restartPolicy: Always
       volumes:
       - name: my-data
-        hostPath:
-          path: "/mnt/deathstar" 
+        persistentVolumeClaim:
+          claimName: user-mongo-pvc-volume
