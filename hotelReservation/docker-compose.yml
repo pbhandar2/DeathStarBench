@@ -245,8 +245,38 @@ services:
     
 volumes:
   geo:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/deathstar/geo
   profile:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/deathstar/profile
   rate:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/deathstar/rate
   recommendation:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/deathstar/recommendation
   reservation:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/deathstar/reservation
   user:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/deathstar/user

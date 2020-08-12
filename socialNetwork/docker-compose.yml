@@ -25,8 +25,8 @@ services:
 #      - 27018:27017
     restart: always
     volumes:
-      - "/mnt/deathstar/social-graph-mongodb:/data/db"
-      - "/mnt/deathstar/social-graph-mongodb:/data/configdb"
+      - "${APPHOSTPATH}/social-graph-mongodb:/data/db"
+      - "${APPHOSTPATH}/social-graph-mongodb:/data/configdb"
 
   social-graph-redis:
     image: redis
@@ -100,8 +100,8 @@ services:
 #      - 27019:27017
     restart: always
     volumes:
-      - "/mnt/deathstar/post-storage-mongodb:/data/db"
-      - "/mnt/deathstar/post-storage-mongodb:/data/configdb"
+      - "${APPHOSTPATH}/post-storage-mongodb:/data/db"
+      - "${APPHOSTPATH}/post-storage-mongodb:/data/configdb"
 
 
   user-timeline-service:
@@ -126,8 +126,8 @@ services:
 #      - 27020:27017
     restart: always
     volumes:
-      - "/mnt/deathstar/user-timeline-mongodb:/data/db"
-      - "/mnt/deathstar/user-timeline-mongodb:/data/configdb"
+      - "${APPHOSTPATH}/user-timeline-mongodb:/data/db"
+      - "${APPHOSTPATH}/user-timeline-mongodb:/data/configdb"
 
   url-shorten-service:
     image: yg397/social-network-microservices
@@ -151,8 +151,8 @@ services:
 #      - 27021:27017
     restart: always
     volumes:
-      - "/mnt/deathstar/url-shorten-mongodb:/data/db"
-      - "/mnt/deathstar/url-shorten-mongodb:/data/configdb"
+      - "${APPHOSTPATH}/url-shorten-mongodb:/data/db"
+      - "${APPHOSTPATH}/url-shorten-mongodb:/data/configdb"
 
   user-service:
     image: yg397/social-network-microservices
@@ -177,8 +177,8 @@ services:
 #      - 27023:27017
     restart: always
     volumes:
-      - "/mnt/deathstar/user-mongodb:/data/db"
-      - "/mnt/deathstar/user-mongodb:/data/configdb"
+      - "${APPHOSTPATH}/user-mongodb:/data/db"
+      - "${APPHOSTPATH}/user-mongodb:/data/configdb"
 
   media-service:
     image: yg397/social-network-microservices
@@ -203,8 +203,8 @@ services:
 #      - 27024:27017
     restart: always
     volumes:
-      - "/mnt/deathstar/media-mongodb:/data/db"
-      - "/mnt/deathstar/media-mongodb:/data/configdb"
+      - "volume-media-mongodb:/data/db"
+      - "volume-media-mongodb:/data/configdb"
 
   text-service:
     image: yg397/social-network-microservices
@@ -275,3 +275,12 @@ services:
     restart: always
     environment:
       - COLLECTOR_ZIPKIN_HTTP_PORT=9411
+
+
+volumes:
+  volume-media-mongodb:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: "${APPHOSTPATH}/media-mongodb"
