@@ -30,6 +30,12 @@ services:
 #    ports:
 #      - 27018:27017
     restart: always
+    volumes:
+      - "$APPHOSTPATH/media-microservices/movie-id-mongodb:/data/db"
+      - "$APPHOSTPATH/media-microservices/movie-id-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   movie-id-memcached:
     image: memcached
@@ -75,6 +81,12 @@ services:
 #    ports:
 #      - 27019:27017
     restart: always
+    volumes:
+      - "$APPHOSTPATH/media-microservices/user-mongodb:/data/db"
+      - "$APPHOSTPATH/media-microservices/user-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   user-memcached:
     image: memcached
@@ -112,6 +124,12 @@ services:
 #    ports:
 #      - 27020:27017
     restart: always
+    volumes:
+      - "$APPHOSTPATH/media-microservices/review-storage-mongodb:/data/db"
+      - "$APPHOSTPATH/media-microservices/review-storage-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   review-storage-memcached:
     image: memcached
@@ -134,6 +152,12 @@ services:
 #    ports:
 #      - 27021:27017
     restart: always
+    volumes:
+      - "$APPHOSTPATH/media-microservices/user-review-mongodb:/data/db"
+      - "$APPHOSTPATH/media-microservices/user-review-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   user-review-redis:
     image: redis
@@ -156,6 +180,12 @@ services:
     ports:
       - 27022:27017
     restart: always
+    volumes:
+      - "$APPHOSTPATH/media-microservices/movie-review-mongodb:/data/db"
+      - "$APPHOSTPATH/media-microservices/movie-review-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   movie-review-redis:
     image: redis
@@ -190,6 +220,12 @@ services:
 #    ports:
 #      - 27024:27017
     restart: always
+    volumes:
+      - "$APPHOSTPATH/media-microservices/cast-info-mongodb:/data/db"
+      - "$APPHOSTPATH/media-microservices/cast-info-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   cast-info-memcached:
     image: memcached
@@ -212,6 +248,12 @@ services:
 #    ports:
 #      - 27025:27017
     restart: always
+    volumes:
+      - "$APPHOSTPATH/media-microservices/plot-mongodb:/data/db"
+      - "$APPHOSTPATH/media-microservices/plot-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   plot-memcached:
     image: memcached
@@ -234,6 +276,12 @@ services:
 #    ports:
 #      - 27026:27017
     restart: always
+    volumes:
+      - "$APPHOSTPATH/media-microservices/movie-info-mongodb:/data/db"
+      - "$APPHOSTPATH/media-microservices/movie-info-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   movie-info-memcached:
     image: memcached

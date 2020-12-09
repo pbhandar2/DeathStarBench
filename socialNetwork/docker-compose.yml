@@ -20,17 +20,20 @@ services:
 
   social-graph-mongodb:
     image: mongo
-    hostname: social-graph-mongodb
+    hostname: social-graph-mongodbss
 #    ports:
 #      - 27018:27017
     restart: always
     volumes:
-      - "${APPHOSTPATH}/social-graph-mongodb:/data/db"
-      - "${APPHOSTPATH}/social-graph-mongodb:/data/configdb"
+      - "$APPHOSTPATH/social-graph-mongodb:/data/db"
+      - "$APPHOSTPATH/social-graph-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   social-graph-redis:
     image: redis
-    hostname: social-graph-redis
+    hostname: social-graph-rediss
 #    ports:
 #      - 6380:6379
     restart: always
@@ -100,8 +103,11 @@ services:
 #      - 27019:27017
     restart: always
     volumes:
-      - "${APPHOSTPATH}/post-storage-mongodb:/data/db"
-      - "${APPHOSTPATH}/post-storage-mongodb:/data/configdb"
+      - "$APPHOSTPATH/post-storage-mongodb:/data/db"
+      - "$APPHOSTPATH/post-storage-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
 
   user-timeline-service:
@@ -126,8 +132,11 @@ services:
 #      - 27020:27017
     restart: always
     volumes:
-      - "${APPHOSTPATH}/user-timeline-mongodb:/data/db"
-      - "${APPHOSTPATH}/user-timeline-mongodb:/data/configdb"
+      - "$APPHOSTPATH/user-timeline-mongodb:/data/db"
+      - "$APPHOSTPATH/user-timeline-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   url-shorten-service:
     image: yg397/social-network-microservices
@@ -151,8 +160,11 @@ services:
 #      - 27021:27017
     restart: always
     volumes:
-      - "${APPHOSTPATH}/url-shorten-mongodb:/data/db"
-      - "${APPHOSTPATH}/url-shorten-mongodb:/data/configdb"
+      - "$APPHOSTPATH/url-shorten-mongodb:/data/db"
+      - "$APPHOSTPATH/url-shorten-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   user-service:
     image: yg397/social-network-microservices
@@ -177,8 +189,11 @@ services:
 #      - 27023:27017
     restart: always
     volumes:
-      - "${APPHOSTPATH}/user-mongodb:/data/db"
-      - "${APPHOSTPATH}/user-mongodb:/data/configdb"
+      - "$APPHOSTPATH/user-mongodb:/data/db"
+      - "$APPHOSTPATH/user-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   media-service:
     image: yg397/social-network-microservices
@@ -203,8 +218,11 @@ services:
 #      - 27024:27017
     restart: always
     volumes:
-      - "volume-media-mongodb:/data/db"
-      - "volume-media-mongodb:/data/configdb"
+      - "$APPHOSTPATH/media-mongodb:/data/db"
+      - "$APPHOSTPATH/media-mongodb:/data/configdb"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   text-service:
     image: yg397/social-network-microservices
@@ -277,10 +295,3 @@ services:
       - COLLECTOR_ZIPKIN_HTTP_PORT=9411
 
 
-volumes:
-  volume-media-mongodb:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: "${APPHOSTPATH}/media-mongodb"

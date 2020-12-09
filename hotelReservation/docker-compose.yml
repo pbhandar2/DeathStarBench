@@ -186,7 +186,8 @@ services:
     restart: always
     cpuset: "11"
     volumes:
-      - geo:/data/db  
+      - geo:/data/db 
+
 
   mongodb-profile:
     image: mongo
@@ -250,6 +251,7 @@ volumes:
       type: none
       o: bind
       device: /root/deathstar/geo
+
   profile:
     driver: local
     driver_opts:
