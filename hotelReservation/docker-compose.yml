@@ -186,7 +186,10 @@ services:
     restart: always
     cpuset: "11"
     volumes:
-      - geo:/data/db 
+      - "$APPHOSTPATH/hotel-reservation/mongodb-geo:/data/db"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
 
   mongodb-profile:
@@ -198,7 +201,10 @@ services:
     restart: always
     cpuset: "12"
     volumes:
-      - profile:/data/db    
+      - "$APPHOSTPATH/hotel-reservation/mongodb-profile:/data/db"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]   
 
   mongodb-rate:
     image: mongo
@@ -209,7 +215,10 @@ services:
     restart: always
     cpuset: "13"
     volumes:
-      - rate:/data/db   
+      - "$APPHOSTPATH/hotel-reservation/mongodb-rate:/data/db"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]  
 
   mongodb-recommendation:
     image: mongo
@@ -220,7 +229,10 @@ services:
     restart: always
     cpuset: "14"
     volumes:
-      - recommendation:/data/db
+      - "$APPHOSTPATH/hotel-reservation/mongodb-recommendation:/data/db"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
     
   mongodb-reservation:
     image: mongo
@@ -231,7 +243,10 @@ services:
     restart: always
     cpuset: "15"
     volumes:
-      - reservation:/data/db 
+      - "$APPHOSTPATH/hotel-reservation/mongodb-reservation:/data/db"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
 
   mongodb-user:
     image: mongo
@@ -242,7 +257,10 @@ services:
     restart: always
     cpuset: "16"
     volumes:
-      - user:/data/db
+      - "$APPHOSTPATH/hotel-reservation/mongodb-user:/data/db"
+      - "./test.sh:/test.sh"
+    entrypoint: ["/usr/bin/env"]
+    command: ["/test.sh", "mongod"]
     
 volumes:
   geo:
