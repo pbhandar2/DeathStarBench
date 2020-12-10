@@ -20,16 +20,16 @@ services:
 
   social-graph-mongodb:
     image: mongo
-    hostname: social-graph-mongodbss
+    hostname: social-graph-mongodb
 #    ports:
 #      - 27018:27017
     restart: always
     volumes:
       - "$APPHOSTPATH/social-graph-mongodb:/data/db"
       - "$APPHOSTPATH/social-graph-mongodb:/data/configdb"
-      - "./test.sh:/test.sh"
+      - "./test.sh:./test.sh"
     entrypoint: ["/usr/bin/env"]
-    command: ["/test.sh", "mongod"]
+    command: ["./test.sh", "mongod"]
 
   social-graph-redis:
     image: redis
